@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./login.css" rel="stylesheet">
+  
+</head>
+<body>
+  <div class="login">
+    <div class="login-header">
+      <h1>Login</h1>
+    </div>
+    <div class="login-form">
+      <h3>Username:</h3>
+      <input type="text" placeholder="Username" id="user"/><br>
+      <h3>Password:</h3>
+      <input type="password" placeholder="Password" id="pass"/>
+      <br>
+      <button class="login" onclick="login()">Login</button>
+      <br>
+      <a href="./register.html" class="sign-up">REGISTER</a>
+      <br>
+      <h6 class="no-access">Can't access your account?</h6>
+    </div>
+  </div>
+  <div class="error-page">
+    <div class="try-again">Error: Try again?</div>
+  </div>
+
+  <script src="cripts.js"></script>
+</body>
+</html>

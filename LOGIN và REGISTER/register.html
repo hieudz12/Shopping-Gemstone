@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Đăng Ký</title>
+    <link rel="stylesheet" href="/LOGIN và REGISTER/register.css">
+</head>
+<body>
+   <div class="container">
+     <!-- 1 -->
+     <h1>REGISTER</h1>
+   
+     <input type="text" placeholder="Nhập tên đăng nhập" id="user">
+     <p id="userEror" style="color: rgb(249, 243, 243);"></p>
+     <!-- 2 -->
+     <input type="password" placeholder="Nhập password" id="pass">
+     <p></p>
+     <!-- 3 -->
+     <input type="password" placeholder="Nhập lại password" id="repass">
+     <p id="repassEror" style="color: rgb(247, 244, 244);"></p>
+     <!-- 4 -->
+     <input type="text" placeholder="Nhập họ tên" id="fullname">
+     <p></p>
+     <!-- 5 -->
+     <input type="text"placeholder="Nhập địa chỉ Email" id="email"><br>
+     <p id="emailEror" style="color: rgb(241, 237, 237);"></p>
+     <button style="margin-top:15px ;" onclick="register()">SUBMIT</button><br>
+     <a class="Login" href="./login.html">LOGIN</a>
+   </div>
+
+    <!-- script -->
+    <script>
+        var vUser=document.getElementById('user');
+        var vPass=document.getElementById('pass');
+        var vRepass=document.getElementById('repass');
+        var vFullname=document.getElementById('fullname');
+        var vEmail=document.getElementById('email');
+
+        /* mảng */
+
+        var usersArray = new Array();
+        function register(){
+           let check = true;
+           if(vUser.value.length<5){
+            check = false;
+            document.getElementById('userEror').innerHTML='nhập tên đăng nhập phải lớn 5 ký tự'
+           }
+           if(vRepass.value != vPass.value){
+            document.getElementById('repassEror').innerHTML='Mật khẩu không khớp'
+            vRepass.focus();
+           }
+           var filter = /([\w_\.\-])+@(([\w\-])+\.)+([\w])/; 
+            if (!filter.test(vEmail.value)) { 
+           document.getElementById('emailEror').innerHTML='Hay nhap dia chi email hop le.\nExample@gmail.com';
+            vEmail.focus; 
+            return false;
+            }
+           /*  */
+           if(check==true){
+            let userObject = {
+                user: vUser.value,
+                pass: vPass.value,
+                repass: vRepass.value,
+                fullname: vFullname.value,
+                email: vEmail.value,
+            }
+            
+           /*  console.log(userObject) */
+           usersArray.push(userObject);
+           console.log(usersArray);
+          
+           }
+
+           if(vUser.value.length>5 && vPass.value.length>5 && vRepass.value.length>5 && vFullname.value.length>5 && vEmail.value.length>5 && vRepass.value==vPass.value){
+            alert('Đăng nhập thành công')
+            var vUserEror=document.getElementById('userEror');
+            vUserEror.innerHTML="";
+            vPass.value=""
+            vRepass.value=""
+            vFullname.value=""
+            vEmail.value=""
+           }else{
+            alert('Đăng nhập thất bại')
+            vUser.focus();
+            
+           }
+        }
+
+    </script>
+</body>
+</html>
